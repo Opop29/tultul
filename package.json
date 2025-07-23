@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-   "homepage": "https://Opop29.github.io/tultul",
+  "homepage": "https://Opop29.github.io/tultul",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -11,12 +11,13 @@
     "test.e2e": "cypress run",
     "test.unit": "vitest",
     "lint": "eslint",
-        "predeploy": "npm run build",
-         "deploy": "gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@ionic/react": "^8.5.0",
     "@ionic/react-router": "^8.5.0",
+    "@supabase/supabase-js": "^2.52.0",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "ionicons": "^7.4.0",

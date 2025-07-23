@@ -2,6 +2,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
+import Landing from './pages/Landing'; // <-- Import the new Landing page
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -39,11 +40,14 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-       <Route exact path="/tultul/home">
+        <Route exact path="/tultul/landing">
+          <Landing />
+        </Route>
+        <Route exact path="/tultul/home">
           <Home />
         </Route>
         <Route exact path="/tultul/">
-        <Redirect to="/tultul/home" />
+          <Redirect to="/tultul/landing" />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
