@@ -38,19 +38,19 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/tultul/landing">
-          <Landing />
-        </Route>
-        <Route exact path="/tultul/home">
-          <Home />
-        </Route>
-        <Route exact path="/tultul/">
-          <Redirect to="/tultul/landing" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
+   <IonReactRouter>
+  <IonRouterOutlet>
+    <Route exact path="/tultul/landing">
+      <Landing />
+    </Route>
+    <Route exact path="/tultul/home">
+      <Home /> {/* Only Home.tsx contains IonMenu */}
+    </Route>
+    <Route exact path="/tultul/">
+      <Redirect to="/tultul/landing" />
+    </Route>
+  </IonRouterOutlet>
+</IonReactRouter>
   </IonApp>
 );
 

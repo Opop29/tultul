@@ -1,18 +1,30 @@
-import React from 'react';
-import { IonPage, IonContent, IonText, IonMenu, IonHeader, IonToolbar, IonTitle, IonButtons, IonMenuButton, IonList, IonItem, IonIcon } from '@ionic/react';
+import React, { useRef } from 'react';
+import { IonPage, IonContent, IonText, IonMenu, IonHeader, IonToolbar, IonTitle, IonButtons, IonMenuButton, IonList, IonItem, IonIcon, IonMenuToggle } from '@ionic/react';
 import { logOutOutline, menuOutline, homeOutline } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const history = useHistory();
+  const menuRef = useRef<HTMLIonMenuElement>(null);
 
   const handleLogout = () => {
+    // Close the menu before navigating
+    if (menuRef.current) {
+      menuRef.current.close();
+    }
     history.push('/tultul/landing');
+  };
+
+  const handleHomeClick = () => {
+    if (menuRef.current) {
+      menuRef.current.close();
+    }
+    // Add navigation if needed
   };
 
   return (
     <>
-      <IonMenu side="start" contentId="main-content" type="overlay">
+      <IonMenu side="start" contentId="main-content" type="overlay" ref={menuRef}>
         <IonHeader>
           <IonToolbar color="primary">
             <IonTitle>Admin Menu</IonTitle>
@@ -20,14 +32,18 @@ const Home: React.FC = () => {
         </IonHeader>
         <IonContent>
           <IonList>
-            <IonItem button>
-              <IonIcon slot="start" icon={homeOutline} />
-              Home
-            </IonItem>
-            <IonItem button onClick={handleLogout}>
-              <IonIcon slot="start" icon={logOutOutline} />
-              Logout
-            </IonItem>
+            <IonMenuToggle autoHide={false}>
+              <IonItem button onClick={handleHomeClick}>
+                <IonIcon slot="start" icon={homeOutline} />
+                Home
+              </IonItem>
+            </IonMenuToggle>
+            <IonMenuToggle autoHide={false}>
+              <IonItem button onClick={handleLogout}>
+                <IonIcon slot="start" icon={logOutOutline} />
+                Logout
+              </IonItem>
+            </IonMenuToggle>
           </IonList>
         </IonContent>
       </IonMenu>
