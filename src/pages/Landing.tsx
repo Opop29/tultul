@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IonPage, IonContent, IonButton, IonText, IonInput, IonItem, IonLabel } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 
-const ADMIN_PASSCODE = 'admin123'; // Change this as needed
+const ADMIN_PASSCODE = import.meta.env.VITE_ADMIN_PASSCODE;
 
 const Landing: React.FC = () => {
   const history = useHistory();
