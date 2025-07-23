@@ -1,6 +1,9 @@
 {
+  
   "short_name": "Ionic App",
-  "name": "My Ionic App",
+   "name": "Tultul AR Navigation",
+   
+    "description": "AR Navigation Admin for School System",
   "icons": [
     {
       "src": "assets/icon/favicon.png",
