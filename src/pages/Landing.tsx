@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonPage, IonContent, IonButton, IonText, IonInput, IonItem, IonLabel } from '@ionic/react';
+import { IonPage, IonContent, IonButton, IonText, IonInput, IonItem, IonLabel, IonToast } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 
 const ADMIN_PASSCODE = import.meta.env.VITE_ADMIN_PASSCODE;
@@ -8,14 +8,20 @@ const Landing: React.FC = () => {
   const history = useHistory();
   const [passcode, setPasscode] = useState('');
   const [error, setError] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
   const handleLogin = () => {
     if (passcode === ADMIN_PASSCODE) {
       setError('');
-      history.push('/tultul/home');
+      setShowToast(true);
     } else {
       setError('Incorrect passcode');
     }
+  };
+
+  const handleToastButton = () => {
+    setShowToast(false);
+    history.push('/tultul/home');
   };
 
   return (
@@ -77,6 +83,19 @@ const Landing: React.FC = () => {
             Enter Admin Panel
           </IonButton>
         </div>
+        <IonToast
+          isOpen={showToast}
+          message="Login successful! Click to proceed."
+          color="success"
+          position="top"
+          buttons={[
+            {
+              text: 'Proceed',
+              handler: handleToastButton
+            }
+          ]}
+          onDidDismiss={() => setShowToast(false)}
+        />
         <style>
           {`
             @keyframes fadeIn {
